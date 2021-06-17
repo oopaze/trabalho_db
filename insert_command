@@ -1,0 +1,45 @@
+-- inserindo dados de autores
+INSERT INTO autores
+	(nome)
+VALUES
+	("Friedrich Nietzsche"),
+	("Augusto Cury"),
+	("Nicholas Sparks"),
+	("Clarice Lispector"),
+	("George R. R. Martin"),
+	("Agatha Christie"),
+	("J.K. Rowling"),
+	("Bernard Cornwell"),
+	("John Green");
+
+	
+-- Inserindo dados de generos
+INSERT INTO generos
+	(nome)
+VALUES
+	("Suspense"),
+	("Conto"),
+	("Crônica "),
+	("Ensaio "),
+	("Poesia "),
+	("Carta"),
+	("Aventura"),
+	("Drama"),
+	("Literatura fantástica"),
+	("Realismo Mágico "),
+	("Romance "),
+	("Terror");
+	
+-- Inserindo dados de editoras
+INSERT INTO editoras
+	(nome)
+VALUES
+	("Saraiva"),
+	("Arqueiro"),
+	("Rocco"),
+	("Suma"),
+	("Globo Livros"),
+	("Rocco"),
+	("Panini"),
+	("Record"),
+	("Intrínseca");
