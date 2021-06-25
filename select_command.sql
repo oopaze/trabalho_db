@@ -1,3 +1,15 @@
+-- Selecionando todos os autores
+SELECT * FROM autores;
+
+-- Selecionando os generos mais usados
+SELECT 
+    g.*,
+    COUNT(l) AS quantidade_livros
+FROM generos g, genero_livro gl, livros l
+WHERE gl.genero_id = g.id AND l.id = gl.livro_id
+GROUP BY g.id
+ORDER BY COUNT(l) DESC;
+
 -- Selecionando todos os autores e as editoras as quais ele já se relacionou 
 SELECT 
     autor.*,
@@ -17,7 +29,7 @@ FROM editoras AS editora
 INNER JOIN livros AS livro ON editora.id = livro.editora_id 
 GROUP BY editora.id;
 
--- Selecionando todos os livros com os dados de genero, autor e editora
+-- Selecionando todos os livros do mais novo ao mais velho com os dados de genero, autor e editora
 SELECT 
 	livro.id,
     livro.titulo, 
@@ -35,6 +47,7 @@ INNER JOIN autores AS autor ON autor.id = al.autor_id
 INNER JOIN genero_livro AS gl ON gl.livro_id = livro.id
 INNER JOIN generos AS genero ON genero.id = gl.genero_id
 WHERE autor.sexo = 'F'
-GROUP BY livro.id, autor.id, editora.id;
+GROUP BY livro.id, autor.id, editora.id
+ORDER BY livro.adicionado_em;
 
 
