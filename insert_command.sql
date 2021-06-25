@@ -1,16 +1,16 @@
 -- inserindo dados de autores
 INSERT INTO autores
-	(nome)
+	(nome, sexo)
 VALUES
-	('Friedrich Nietzsche'),
-	('Augusto Cury'),
-	('Nicholas Sparks'),
-	('Clarice Lispector'),
-	('George R. R. Martin'),
-	('Agatha Christie'),
-	('J.K. Rowling'),
-	('Bernard Cornwell'),
-	('John Green');
+	('Friedrich Nietzsche', 'M'),
+	('Augusto Cury', 'M'),
+	('Nicholas Sparks', 'M'),
+	('Clarice Lispector', 'F'),
+	('George R. R. Martin', 'M'),
+	('Agatha Christie', 'F'),
+	('J.K. Rowling', 'F'),
+	('Bernard Cornwell', 'M'),
+	('John Green', 'M');
 
 	
 -- Inserindo dados de generos
@@ -79,7 +79,7 @@ BEGIN
 	
 	INSERT INTO autor_livro (livro_id, autor_id)
 	SELECT novo_livro_id, autor.id
-	FROM autores AS autor WHERE autor.nome = 'George R. R. Martin';
+	FROM autores AS autor WHERE autor.nome = 'Agatha Christie';
 	
 	INSERT INTO genero_livro(livro_id, genero_id)
 	SELECT novo_livro_id, genero.id
