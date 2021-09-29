@@ -1,0 +1,45 @@
+CREATE TABLE IF NOT EXISTS editoras(
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS livros(
+	id SERIAL PRIMARY KEY,
+	titulo VARCHAR(100) NOT NULL,
+	paginas INTEGER NOT NULL,
+	editora_id INTEGER NOT NULL,
+	adicionado_em DATE DEFAULT CURRENT_TIMESTAMP,
+
+	FOREIGN KEY (editora_id) REFERENCES editoras(id)
+);
+
+CREATE TABLE IF NOT EXISTS generos(
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(45) NOT NULL UNIQUE
+);
+
+CREATE TYPE sexo AS ENUM ('F', 'M');
+CREATE TABLE IF NOT EXISTS autores(
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(45) NOT NULL,
+	sexo sexo NOT NULL,
+	adicionado_em DATE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS autor_livro(
+	id SERIAL PRIMARY KEY,
+	autor_id INTEGER NOT NULL,
+	livro_id INTEGER NOT NULL,
+	
+	FOREIGN KEY (autor_id) REFERENCES autores(id),
+	FOREIGN KEY (livro_id) REFERENCES livros(id)
+);
+
+CREATE TABLE IF NOT EXISTS genero_livro(
+	id SERIAL PRIMARY KEY,
+	genero_id INTEGER NOT NULL,
+	livro_id INTEGER NOT NULL,
+	
+	FOREIGN KEY (genero_id) REFERENCES generos(id),
+	FOREIGN KEY (livro_id) REFERENCES livros(id)
+);
